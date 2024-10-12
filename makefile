@@ -1,2 +1,2 @@
 all:
-	g++ -std=c++17 main.cpp -o pngs2pdf
+	g++ -std=c++17 main.cpp -o pngs2pdf -lhpdf
