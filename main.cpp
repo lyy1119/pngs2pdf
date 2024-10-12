@@ -22,4 +22,5 @@ int get_page_numbers()
 int main()
 {
     int pageNumber = get_page_numbers();
+    std::cout << pageNumber << " pages found." << std::endl;
 }
