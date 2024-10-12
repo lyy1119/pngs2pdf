@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <filesystem>
-#include <sstream>
 #include <hpdf.h>
 
 int get_page_numbers()
@@ -49,15 +48,12 @@ int main()
     {
         for (const auto &imageFile : imageFiles)
         {
-            std::cout << "process png file:" << imageFile << std::endl;
             HPDF_Page page = HPDF_AddPage(pdf);
             HPDF_Image image = HPDF_LoadPngImageFromFile(pdf, imageFile.c_str());
-            std::cout << 1 << std::endl;
             if (!image) {
                 HPDF_Free(pdf);
                 throw std::runtime_error("Failed to load PNG image.");
             }
-            std::cout << "load png file:" << imageFile << std::endl;
             HPDF_REAL imageWidth = HPDF_Image_GetWidth(image);
             HPDF_REAL imageHeight = HPDF_Image_GetHeight(image);
             HPDF_Page_SetWidth(page, imageWidth);
